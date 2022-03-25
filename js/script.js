@@ -12,6 +12,7 @@ let food = {
     y: Math.floor(Math.random() * 15 + 1) * box
 }
 let score = 0;
+let acertos = 0;
 let level = 0;
 let velocidade = 500; // Velocidade mínima
 let velocidadeLevel = 200;
@@ -106,14 +107,57 @@ function iniciarJogo(){
 
     level += 1;
     score += 10;
-        if(score == 20){
-            popup('cornao','Cobre?','simmmm', true);
-        }else if(score == 10){
-            popup('cornao','Bronze?','simmmm', true);
+        if(score == 10){
+            (async () => {
+
+                /* inputOptions can be an object or Promise */
+                const inputOptions = new Promise((resolve) => {
+                  setTimeout(() => {
+                    resolve({
+                      'a': 'Anarcocapitalismo',
+                      'b': 'Feudalismo',
+                      'c': 'Capitalismo',
+                      'd': 'Mercantilismo'
+                    })
+                  }, 1000)
+                })
+                
+                const { value: color } = await Swal.fire({
+                  title: 'Questão 1',
+                  height: '800',
+                  input: 'radio',
+                  inputOptions: inputOptions,
+                  customClass: {
+                    popup: 'format-pre'
+                  },
+                  inputValidator: (value) => {
+                    if (!value) {
+                      return 'You need to choose something!'
+                    }
+                  }
+                })
+                
+                if (color == 'c') {
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Parabéns Você Acertou a Questão',
+                    html: `A primeira vez, que o capitalismo foi empregado em sociedade, foi na <b>revolução industrial</b>, onde se desenvolveu até os dias atuais.`,
+                    footer: '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">'
+                })
+                  acertos++;
+                }
+                else {
+                  Swal.fire({ html: `You selected: Falso` })
+               }
+                
+            })();
+           // popup('question', 'Questão 1', 'pergunta', true);
+        }else if(score == 20){
+            popup('question', 'Questão 2', 'pergunta', true);
         }else if(score == 30){
-            popup('cornao','Prata?','simmmm', true);
+            popup('question', 'Questão 3', 'pergunta', true);
         }else{
-            popup('cornao','PARTIDA PERFEITA!', '', false);
+            popup('success', 'Parabéns', 'Você ganhou o jogo!', false);
             
             setTimeout(refresh, 10000); 
             function refresh(){
@@ -147,11 +191,11 @@ function velocidadeCobrinha(velocity){
     clearInterval(jogo);
     jogo = setInterval(iniciarJogo, velocity);
 }
- function popup(type, title, mensagem, botao){
+ function popup(icon, questao, pergunta, botao){
      Swal.fire({
-         type: type,
-         title: title,
-         text: mensagem,
+         icon: icon,
+         title: questao,
+         text: pergunta,
         showConfirmButton: botao
      });
  }
