@@ -18,6 +18,9 @@ let velocidade = 500; // Velocidade mínima
 let velocidadeLevel = 200;
 let foodSameSnake = 0;
 
+const sound = new Audio('sound.mp3')
+const nakuludu = new Audio('nakuludu.mp3')
+
 function criarBG(){
     context.fillStyle = "lightgreen";
     context.fillRect(0, 0, 16 * box, 16 * box);
@@ -109,73 +112,153 @@ function iniciarJogo(){
     score += 10;
         if(score == 10){
             (async () => {
-
-                /* inputOptions can be an object or Promise */
                 const inputOptions = new Promise((resolve) => {
                   setTimeout(() => {
                     resolve({
-                      'a': 'Anarcocapitalismo',
-                      'b': 'Feudalismo',
+                      'anarcocapitalismo': 'Anarcocapitalismo',
+                      'feudalismo': 'Feudalismo',
                       'c': 'Capitalismo',
-                      'd': 'Mercantilismo'
+                      'mercantilismo': 'Mercantilismo'
                     })
                   }, 1000)
                 })
-                
                 const { value: color } = await Swal.fire({
                   title: 'Questão 1',
-                  height: '800',
+                  text: 'Qual era a ideologia política, que estava se moldando na revolução industrial?',
                   input: 'radio',
                   inputOptions: inputOptions,
-                  customClass: {
-                    popup: 'format-pre'
-                  },
+                  customClass: { popup: 'format-pre'},
                   inputValidator: (value) => {
                     if (!value) {
-                      return 'You need to choose something!'
+                      return 'Você precisa escolher alguma alternativa!'
                     }
                   }
                 })
-                
                 if (color == 'c') {
+                    sound.play();
                   Swal.fire({
                     icon: 'success',
                     title: 'Parabéns Você Acertou a Questão',
                     html: `A primeira vez, que o capitalismo foi empregado em sociedade, foi na <b>revolução industrial</b>, onde se desenvolveu até os dias atuais.`,
                     footer: '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">'
-                })
+                    })
                   acertos++;
                 }
                 else {
-                  Swal.fire({ html: `You selected: Falso` })
+                    nakuludu.play();
+                  Swal.fire({  
+                    icon: 'error',
+                    title: 'Que Pena, Você Errou a Questão',
+                    html: `O período do <b>${color}</b>, não coincide, com o tempo da <b>revolução industrial</b>.`,
+                    footer: '<img src="https://img.ifunny.co/images/c519bf7599080a0d7fcf8d8b79a2119a0939a617713bd35c98932293766e7e89_1.jpg" height="225px">'
+                })
                }
                 
             })();
-           // popup('question', 'Questão 1', 'pergunta', true);
-        }else if(score == 20){
-            popup('question', 'Questão 2', 'pergunta', true);
-        }else if(score == 30){
-            popup('question', 'Questão 3', 'pergunta', true);
-        }else{
+        }
+        else if(score == 20){
+            (async () => {
+                const inputOptions = new Promise((resolve) => {
+                  setTimeout(() => {
+                    resolve({
+                      'Manufatura': 'Manufatura',
+                      'b': 'Maquinofatura ',
+                      'Artesanato': 'Artesanato',
+                      'Nenhuma das alternativas anteriores': 'Nenhuma das alternativas anteriores'
+                    })
+                  }, 1000)
+                })
+                const { value: color } = await Swal.fire({
+                  title: 'Questão 2',
+                  text: 'Qual sistema de produção, que surgiu, na revolução industrial?',
+                  input: 'radio',
+                  inputOptions: inputOptions,
+                  customClass: { popup: 'format-pre'},
+                  inputValidator: (value) => {
+                    if (!value) {
+                        return 'Você precisa escolher alguma alternativa!'
+                    }
+                  }
+                })
+                
+                if (color == 'b') {
+                    sound.play();
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Parabéns Você Acertou a Questão',
+                    html: `Maquinofatura é a indústria mecanizada, que surgiu com a evolução das manufaturas na <b>revolução industrial</b>, com a introdução de motores a vapor para movimentar as máquinas que dependiam da força humana, dos animais, dos ventos ou da água.`,
+                    footer: '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">'
+                    })
+                  acertos++;
+                }
+                else {
+                    nakuludu.play();
+                  Swal.fire({  
+                    icon: 'error',
+                    title: 'Que Pena, Você Errou a Questão',
+                    html: `"<b>${color}</b>" não está correta!`,
+                    footer: '<img src="https://img.ifunny.co/images/c519bf7599080a0d7fcf8d8b79a2119a0939a617713bd35c98932293766e7e89_1.jpg" height="225px">'
+                     })
+                }    
+            })();
+            }
+        else if(score == 30){
+            (async () => {
+                const inputOptions = new Promise((resolve) => {
+                  setTimeout(() => {
+                    resolve({
+                      'a': 'XVIII',
+                      'XIII': 'XIII',
+                      'XXI': 'XXI',
+                      'XV': 'XV'
+                    })
+                  }, 1000)
+                })
+                const { value: color } = await Swal.fire({
+                  title: 'Questão 3',
+                  text: 'Qual século iniciou-se o desenvolvimento da revolução industrial?',
+                  input: 'radio',
+                  inputOptions: inputOptions,
+                  customClass: { popup: 'format-pre'},
+                  inputValidator: (value) => {
+                    if (!value) {
+                        return 'Você precisa escolher alguma alternativa!'
+                    }
+                  }
+                })
+                
+                if (color == 'a') {
+                    sound.play();
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Parabéns Você Acertou a Questão',
+                    html: `A Revolução Industrial, foi um período que teve início, a partir da segunda metade do século XVIII.`,
+                    footer: '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">'
+                    })
+                  acertos++;
+                }
+                else {
+                    nakuludu.play();
+                  Swal.fire({  
+                    icon: 'error',
+                    title: 'Que Pena, Você Errou a Questão',
+                    html: `O século <b>"${color}"</b>, não teve ligação com o início da <b>revolução industrial</b>.`,
+                    footer: '<img src="https://img.ifunny.co/images/c519bf7599080a0d7fcf8d8b79a2119a0939a617713bd35c98932293766e7e89_1.jpg" height="225px">'
+                     })
+                }    
+            })();
+        }
+        else{
             popup('success', 'Parabéns', 'Você ganhou o jogo!', false);
             
             setTimeout(refresh, 10000); 
             function refresh(){
                 window.location.reload();
-       }
+                 }
              }
-  
-  //      velocidade -=2;
 
         var inputPontuacao = document.getElementById("pontuacao");
         inputPontuacao.value = score;
-
-        if (level % 5 === 0){
-//            velocidadeLevel -= 10;
- //           velocidadeCobrinha(velocidadeLevel);
-        } else {
-   //         velocidadeCobrinha(velocidadeLevel);
-        }
         
     }
 
