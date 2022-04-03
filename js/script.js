@@ -10,9 +10,9 @@ const q1 = 'A primeira vez, que o capitalismo foi empregado em sociedade, foi na
 const q2 = 'Maquinofatura é a indústria mecanizada, que surgiu com a evolução das manufaturas na <b>revolução industrial</b>, com a introdução de motores a vapor para movimentar as máquinas que dependiam da força humana, dos animais, dos ventos ou da água.';
 const q3 = 'A Revolução Industrial, foi um período que teve início, a partir da segunda metade do século XVIII.';
 const q4 = 'A <b>revolução industrial</b> ao todo, teve 3 fases sendo divididas entre: 1º(1750-1850); 2º(1850-1950); 3º(1950-Atualidade).';
-const q5 = 'A era vitoriana foi o período do reinado da rainha Vitória, de junho de 1837 até sua morte em janeiro de 1901.';
-const q6 = '';
-const q7 = '';
+const q5 = 'A Era Vitoriana, ocorrida entre 1837 a 1901, marca o reinado da Rainha Vitória no Reino Unido e um período de grandes transformações econômicas, políticas e culturais.';
+const q6 = 'O ludismo foi um movimento de trabalhadores que se uniram e revoltaram-se contra as máquinas no princípio da Revolução Industrial. A ação organizada dos ludistas consistia em invadir uma indústria têxtil e promover a destruição das máquinas que produziam as mercadorias.';
+const q7 = 'O ludismo foi um movimento de trabalhadores que se uniram e revoltaram-se contra as máquinas no princípio da Revolução Industrial. A ação organizada dos ludistas consistia em invadir uma indústria têxtil e promover a destruição das máquinas que produziam as mercadorias tal prática era sobretudo um meio de pressionar os empregadores, e não envolvia hostilidade contra as máquinas propriamente.';
 
 
 
@@ -187,7 +187,7 @@ function iniciarJogo(){
                   Swal.fire({
                     icon: 'success',
                     title: 'Parabéns Você Acertou a Questão',
-                    html: `A primeira vez, que o capitalismo foi empregado em sociedade, foi na <b>revolução industrial</b>, onde se desenvolveu até os dias atuais.`,
+                    html: `${q1}`,
                     footer: `${certo}`
                     })
                   acertos++;
@@ -197,7 +197,7 @@ function iniciarJogo(){
                   Swal.fire({  
                     icon: 'error',
                     title: 'Que Pena, Você Errou a Questão',
-                    html: `O período do <b>${color}</b>, não coincide, com o tempo da <b>revolução industrial</b>.`,
+                    html: `${q1}`,
                     footer: `${errado}`
                 })
                }
@@ -234,7 +234,7 @@ function iniciarJogo(){
                   Swal.fire({
                     icon: 'success',
                     title: 'Parabéns Você Acertou a Questão',
-                    html: `Maquinofatura é a indústria mecanizada, que surgiu com a evolução das manufaturas na <b>revolução industrial</b>, com a introdução de motores a vapor para movimentar as máquinas que dependiam da força humana, dos animais, dos ventos ou da água.`,
+                    html: `${q2}`,
                     footer: `${certo}`
                     })
                   acertos++;
@@ -244,7 +244,7 @@ function iniciarJogo(){
                   Swal.fire({  
                     icon: 'error',
                     title: 'Que Pena, Você Errou a Questão',
-                    html: `"<b>${color}</b>" não está correta!`,
+                    html: `${q2}`,
                     footer: `${errado}`
                      })
                 }    
@@ -280,7 +280,7 @@ function iniciarJogo(){
                   Swal.fire({
                     icon: 'success',
                     title: 'Parabéns Você Acertou a Questão',
-                    html: `A Revolução Industrial, foi um período que teve início, a partir da segunda metade do século XVIII.`,
+                    html: `${q3}`,
                     footer: `${certo}`
                   })
                   acertos++;
@@ -290,7 +290,7 @@ function iniciarJogo(){
                   Swal.fire({  
                     icon: 'error',
                     title: 'Que Pena, Você Errou a Questão',
-                    html: `O século <b>"${color}"</b>, não teve ligação com o início da <b>revolução industrial</b>.`,
+                    html: `${q3}`,
                     footer: `${errado}`
                   })
                 }    
@@ -326,7 +326,7 @@ function iniciarJogo(){
               Swal.fire({
                 icon: 'success',
                 title: 'Parabéns Você Acertou a Questão',
-                html: `A <b>revolução industrial</b> ao todo, teve 3 fases sendo divididas entre: 1º(1750-1850); 2º(1850-1950); 3º(1950-Atualidade)`,
+                html: `${q4}`,
                 footer: `${certo}`
               })
               acertos++;
@@ -336,7 +336,7 @@ function iniciarJogo(){
               Swal.fire({  
                 icon: 'error',
                 title: 'Que Pena, Você Errou a Questão',
-                html: `${color}, está incorreta!`,
+                html: `${q4}`,
                 footer: `${errado}`
               })
             }    
@@ -368,11 +368,11 @@ function iniciarJogo(){
       })
       
       if (color == 'd') {
-          sound.play();
+        // sound.play();
         Swal.fire({
           icon: 'success',
           title: 'Parabéns Você Acertou a Questão',
-          html: ``,
+          html: `${q5}`,
           footer: `${certo}`
           })
         acertos++;
@@ -382,13 +382,106 @@ function iniciarJogo(){
         Swal.fire({  
           icon: 'error',
           title: 'Que Pena, Você Errou a Questão',
-          html: ``,
+          html: `${q5}`,
           footer: `${errado}`
            })
       }    
   })();
         }
+        else if(score == 60){
+          (async () => {
+            const inputOptions = new Promise((resolve) => {
+              setTimeout(() => {
+                resolve({
+                  'Luteranismo': 'Luteranismo',
+                  'Anglicanismo': 'Anglicanismo',
+                  'c': 'Ludismo',
+                  'Trabalhadores Rurais Sem Terra': 'Trabalhadores Rurais Sem Terra'
+                })
+              }, 1000)
+            })
+            const { value: color } = await Swal.fire({
+              title: 'Questão 6',
+              text: 'Qual foi o movimento de trabalhadores ingleses, que no início do século XIX, se notabilizou pela destruição de maquinários, como forma de protesto?',
+              input: 'radio',
+              inputOptions: inputOptions,
+              customClass: { popup: 'format-pre'},
+              inputValidator: (value) => {
+                if (!value) {
+                    return 'Você precisa escolher alguma alternativa!'
+                }
+              }
+            })
+            
+            if (color == 'c') {
+              //  sound.play();
+              Swal.fire({
+                icon: 'success',
+                title: 'Parabéns Você Acertou a Questão',
+                html: `${q6}`,
+                footer: `${certo}`
+                })
+              acertos++;
+            }
+            else {
+              //  nakuludu.play();
+              Swal.fire({  
+                icon: 'error',
+                title: 'Que Pena, Você Errou a Questão',
+                html: `${q6}`,
+                footer: `${errado}`
+                 })
+            }    
+        })();    
+        }
+        else if(score == 70){
+          (async () => {
+            const inputOptions = new Promise((resolve) => {
+              setTimeout(() => {
+                resolve({
+                  'Avanço tecnológico': 'Avanço tecnológico',
+                  'b': 'Introdução de máquinas; redução de salários; desemprego generalizado',
+                  'O poder absoluto da coroa; o parlamento dos burgueses': 'O poder absoluto da coroa; o parlamento dos burgueses',
+                  'Nobres; comerciantes; empregadores': 'Nobres; comerciantes; empregadores'
+                })
+              }, 1000)
+            })
+            const { value: color } = await Swal.fire({
+              title: 'Questão 7',
+              text: 'O Ludismo se opunha ao que?',
+              input: 'radio',
+              inputOptions: inputOptions,
+              customClass: { popup: 'format-pre'},
+              inputValidator: (value) => {
+                if (!value) {
+                    return 'Você precisa escolher alguma alternativa!'
+                }
+              }
+            })
+            
+            if (color == 'b') {
+                sound.play();
+              Swal.fire({
+                icon: 'success',
+                title: 'Parabéns Você Acertou a Questão',
+                html: `${q7}`,
+                footer: `${certo}`
+                })
+              acertos++;
+            }
+            else {
+                nakuludu.play();
+              Swal.fire({  
+                icon: 'error',
+                title: 'Que Pena, Você Errou a Questão',
+                html: `${q7}`,
+                footer: `${errado}`
+                 })
+            }    
+        })();
+        }
         else{
+          score - 10;
           Swal.fire({  
             icon: 'Sucess',
             title: 'Parabéns!',
@@ -428,4 +521,4 @@ function velocidadeCobrinha(velocity){
      });
  }
 
-let jogo = setInterval(iniciarJogo, 100);
+let jogo = setInterval(iniciarJogo, 80);
