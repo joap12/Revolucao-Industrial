@@ -4,6 +4,18 @@ let context = canvas.getContext("2d");
 // create the unit
 let box = 32;
 
+// Questions Reply's
+
+const q1 = 'A primeira vez, que o capitalismo foi empregado em sociedade, foi na <b>revolução industrial</b>, onde se desenvolveu até os dias atuais.';
+const q2 = 'Maquinofatura é a indústria mecanizada, que surgiu com a evolução das manufaturas na <b>revolução industrial</b>, com a introdução de motores a vapor para movimentar as máquinas que dependiam da força humana, dos animais, dos ventos ou da água.';
+const q3 = 'A Revolução Industrial, foi um período que teve início, a partir da segunda metade do século XVIII.';
+const q4 = 'A <b>revolução industrial</b> ao todo, teve 3 fases sendo divididas entre: 1º(1750-1850); 2º(1850-1950); 3º(1950-Atualidade).';
+const q5 = 'A era vitoriana foi o período do reinado da rainha Vitória, de junho de 1837 até sua morte em janeiro de 1901.';
+const q6 = '';
+const q7 = '';
+
+
+
 // load images
 
 const ground = new Image();
@@ -12,6 +24,8 @@ ground.src = "img/ground.png";
 const foodImg = new Image();
 foodImg.src = "img/food.png";
 
+const certo = '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">';
+const errado = '<img src="https://img.ifunny.co/images/c519bf7599080a0d7fcf8d8b79a2119a0939a617713bd35c98932293766e7e89_1.jpg" height="225px">';
 // load audio files
 
 let acerto = new Audio();
@@ -174,7 +188,7 @@ function iniciarJogo(){
                     icon: 'success',
                     title: 'Parabéns Você Acertou a Questão',
                     html: `A primeira vez, que o capitalismo foi empregado em sociedade, foi na <b>revolução industrial</b>, onde se desenvolveu até os dias atuais.`,
-                    footer: '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">'
+                    footer: `${certo}`
                     })
                   acertos++;
                 }
@@ -184,7 +198,7 @@ function iniciarJogo(){
                     icon: 'error',
                     title: 'Que Pena, Você Errou a Questão',
                     html: `O período do <b>${color}</b>, não coincide, com o tempo da <b>revolução industrial</b>.`,
-                    footer: '<img src="https://img.ifunny.co/images/c519bf7599080a0d7fcf8d8b79a2119a0939a617713bd35c98932293766e7e89_1.jpg" height="225px">'
+                    footer: `${errado}`
                 })
                }
                 
@@ -221,7 +235,7 @@ function iniciarJogo(){
                     icon: 'success',
                     title: 'Parabéns Você Acertou a Questão',
                     html: `Maquinofatura é a indústria mecanizada, que surgiu com a evolução das manufaturas na <b>revolução industrial</b>, com a introdução de motores a vapor para movimentar as máquinas que dependiam da força humana, dos animais, dos ventos ou da água.`,
-                    footer: '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">'
+                    footer: `${certo}`
                     })
                   acertos++;
                 }
@@ -231,7 +245,7 @@ function iniciarJogo(){
                     icon: 'error',
                     title: 'Que Pena, Você Errou a Questão',
                     html: `"<b>${color}</b>" não está correta!`,
-                    footer: '<img src="https://img.ifunny.co/images/c519bf7599080a0d7fcf8d8b79a2119a0939a617713bd35c98932293766e7e89_1.jpg" height="225px">'
+                    footer: `${errado}`
                      })
                 }    
             })();
@@ -267,8 +281,8 @@ function iniciarJogo(){
                     icon: 'success',
                     title: 'Parabéns Você Acertou a Questão',
                     html: `A Revolução Industrial, foi um período que teve início, a partir da segunda metade do século XVIII.`,
-                    footer: '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">'
-                    })
+                    footer: `${certo}`
+                  })
                   acertos++;
                 }
                 else {
@@ -277,8 +291,8 @@ function iniciarJogo(){
                     icon: 'error',
                     title: 'Que Pena, Você Errou a Questão',
                     html: `O século <b>"${color}"</b>, não teve ligação com o início da <b>revolução industrial</b>.`,
-                    footer: '<img src="https://img.ifunny.co/images/c519bf7599080a0d7fcf8d8b79a2119a0939a617713bd35c98932293766e7e89_1.jpg" height="225px">'
-                     })
+                    footer: `${errado}`
+                  })
                 }    
             })();
         }
@@ -313,8 +327,8 @@ function iniciarJogo(){
                 icon: 'success',
                 title: 'Parabéns Você Acertou a Questão',
                 html: `A <b>revolução industrial</b> ao todo, teve 3 fases sendo divididas entre: 1º(1750-1850); 2º(1850-1950); 3º(1950-Atualidade)`,
-                footer: '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">'
-                })
+                footer: `${certo}`
+              })
               acertos++;
             }
             else {
@@ -323,10 +337,56 @@ function iniciarJogo(){
                 icon: 'error',
                 title: 'Que Pena, Você Errou a Questão',
                 html: `${color}, está incorreta!`,
-                footer: '<img src="https://img.ifunny.co/images/c519bf7599080a0d7fcf8d8b79a2119a0939a617713bd35c98932293766e7e89_1.jpg" height="225px">'
-                 })
+                footer: `${errado}`
+              })
             }    
         })();
+        }
+        else if(score == 50){  
+    (async () => {
+      const inputOptions = new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({
+            'Elizabeth II': 'Elizabeth II',
+            'Ana Bolena': 'Ana Bolena',
+            'Maria': 'Maria',
+            'd': 'Vitória'
+          })
+        }, 1000)
+      })
+      const { value: color } = await Swal.fire({
+        title: 'Questão 5',
+        text: 'Quem reinava a Inglaterra durante o período, conhecido como "Era Vitoriana"?',
+        input: 'radio',
+        inputOptions: inputOptions,
+        customClass: { popup: 'format-pre'},
+        inputValidator: (value) => {
+          if (!value) {
+              return 'Você precisa escolher alguma alternativa!'
+          }
+        }
+      })
+      
+      if (color == 'd') {
+          sound.play();
+        Swal.fire({
+          icon: 'success',
+          title: 'Parabéns Você Acertou a Questão',
+          html: ``,
+          footer: `${certo}`
+          })
+        acertos++;
+      }
+      else {
+          nakuludu.play();
+        Swal.fire({  
+          icon: 'error',
+          title: 'Que Pena, Você Errou a Questão',
+          html: ``,
+          footer: `${errado}`
+           })
+      }    
+  })();
         }
         else{
           Swal.fire({  

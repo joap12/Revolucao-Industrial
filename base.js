@@ -29,7 +29,7 @@
             icon: 'success',
             title: 'Parabéns Você Acertou a Questão',
             html: ``,
-            footer: '<img src="https://www.otempo.com.br/image/contentid/policy:1.2627146:1646655744/image.jpg?f=3x2&w=1200&$p$f$w=a9f248b" height="225px">'
+            footer: `${certo}`
             })
           acertos++;
         }
@@ -39,7 +39,7 @@
             icon: 'error',
             title: 'Que Pena, Você Errou a Questão',
             html: ``,
-            footer: '<img src="https://img.ifunny.co/images/c519bf7599080a0d7fcf8d8b79a2119a0939a617713bd35c98932293766e7e89_1.jpg" height="225px">'
+            footer: `${errado}`
              })
         }    
     })();
